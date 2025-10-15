@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from 'next/dynamic';
 import { useThingSpeakData } from '@/hooks/useThingSpeakData';
 import Header from '@/components/dashboard/Header';
 import SensorCard from '@/components/dashboard/SensorCard';
@@ -8,6 +9,18 @@ import Footer from '@/components/dashboard/Footer';
 import { Thermometer, Droplets, Sun, Wind, Waves, AlertTriangle, Info } from 'lucide-react';
 import { Feed } from '@/types';
 import GaugeCard from '@/components/dashboard/GaugeCard';
+
+const DynamicGaugeCard = dynamic(() => import('@/components/dashboard/GaugeCard'), {
+  ssr: false,
+  // Opcional: Mostrar um skeleton enquanto o componente carrega no cliente
+  loading: () => <div className="bg-gray-800/50 p-5 rounded-lg animate-pulse h-[164px]"></div>
+});
+
+const DynamicHistoryChart = dynamic(() => import('@/components/dashboard/HistoryChart'), {
+  ssr: false,
+  // Opcional: Mostrar um skeleton enquanto o gráfico carrega
+  loading: () => <div className="bg-gray-800/50 rounded-lg p-4 mt-8 h-96 md:h-[500px] animate-pulse"></div>
+});
 
 function DashboardSkeleton() {
   return (
@@ -112,7 +125,7 @@ export default function Home() {
       <Header />
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-        <GaugeCard 
+        <DynamicGaugeCard 
           title="Temperatura"
           value={isNaN(tempValue) ? 0 : tempValue}
           unit="°C"
@@ -122,7 +135,7 @@ export default function Home() {
           colorStops={temperatureColorStops}
         />
         
-        <GaugeCard
+        <DynamicGaugeCard
           title="Umidade do Ar"
           value={isNaN(humidityValue) ? 0 : humidityValue}
           unit="%"
@@ -154,7 +167,7 @@ export default function Home() {
         />
       </div>
       
-      <HistoryChart feeds={data.feeds} />
+      <DynamicHistoryChart feeds={data.feeds} />
       
       <div className="text-center text-sm text-gray-400 mt-4">
         Última atualização em: {new Date(latestFeed.created_at).toLocaleString('pt-BR', {
