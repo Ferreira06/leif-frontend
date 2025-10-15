@@ -1,7 +1,7 @@
 import { Github, Code, FileText } from 'lucide-react';
 
 const footerLinks = [
-  { name: 'GitHub do Projeto', href: 'https://github.com/Vitoria-BG/leif_frontend', icon: <Github className="w-4 h-4" /> },
+  { name: 'GitHub do Projeto', href: 'https://github.com/Ferreira06/leif-frontend', icon: <Github className="w-4 h-4" /> },
   { name: 'Simulação no Wokwi', href: 'https://wokwi.com/projects/442391236921946113', icon: <Code className="w-4 h-4" /> },
   { name: 'Documentação', href: 'https://docs.google.com/document/d/1DfQPoCTxm_lbGXZy66RfhhFBIziW9bv-dU8MGZVRSGY/edit?usp=sharing', icon: <FileText className="w-4 h-4" /> },
 ];
