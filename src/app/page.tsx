@@ -149,7 +149,7 @@ export default function Home() {
           value={getFieldValue('field3')}
           unit="lx"
           icon={<Sun size={20} />}
-          alertCondition={!isNaN(lightValue) && lightValue < 2800}
+          alertCondition={!isNaN(lightValue) && lightValue < 1800}
         />
         <SensorCard 
           title="Qualidade do Ar"
