@@ -163,7 +163,7 @@ export default function Home() {
           value={soilMoistureValue.toFixed(2)}
           unit="%"
           icon={<Waves size={20} />}
-          alertCondition={!isNaN(soilMoistureValue) && soilMoistureValue > 20.0}
+          alertCondition={!isNaN(soilMoistureValue) && soilMoistureValue < 22.0}
         />
       </div>
       
