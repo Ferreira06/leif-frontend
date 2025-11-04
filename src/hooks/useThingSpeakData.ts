@@ -20,7 +20,7 @@ export function useThingSpeakData(results: number = 100) {
     url.toString(),
     fetcher,
     {
-      refreshInterval: 2000, // Revalida a cada 20 segundos
+      refreshInterval: 60000, // Revalida a cada 60 segundos
       revalidateOnFocus: true,
       dedupingInterval: 1000, // Evita requisições duplicadas em um curto período
     }
